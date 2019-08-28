@@ -8,7 +8,7 @@ Update Codiad editor for PHP 7.3+
 
 2 : Move web assets to /public/assets/    
   
-3 : Localise all web assets     
+3 : Localise web assets ( jquery )    
 
 4 : Fix errors / issues  
  
