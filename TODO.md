@@ -1,6 +1,6 @@
 # TODO    
   
-Update Codiad editor for PHP 7.3+  
+Update Codiad editor for PHP 7.2+  
 
 Fork :  
 https://github.com/SentryXSI/Codiad  
@@ -11,9 +11,15 @@ https://github.com/SentryXSI/Codiad
 
 2 : Move web assets to /public/assets/    
   
-3 : Localise web assets ( jquery )    
+3 : Localise web assets ( jquery ) 
+
 
 4: Ideas 
+
+    - No remote scripts    
+    - Move inline css styles to css file  
+    - Replace class file include / require with autoloader      
+    - Replace 'global' usage with dependency injection          
 
     code snippets manager  
     code generators  
@@ -22,18 +28,29 @@ https://github.com/SentryXSI/Codiad
 
 5 : Fix errors / issues  
  
-  - add missing html start tag ( index.php )       
+  - add missing html start tag in head ( index.php )    
+
+```html
+
+<html lang="en">
+```
+   
   - add \Lib namespace to fix namespace collisions with mb_ord() / mb_chr() ( /lib/diff_match_patch.php )   
+
+```php
+
+PHP Fatal error:  Cannot redeclare mb_ord() in /var/www/html/Codiad/lib/diff_match_patch.php on line 2079
+
+```
 
 Update class.filemanager.php ( public function modify )  
 
 ```php
+
 $dmp = new Lib\diff_match_patch();
+
 ```
-
-  - ( replace class file include / require with autoloader )    
-  - ( replace 'global' usage with dependency injection )          
-
+  
 Composer  
 ext-json is missing in composer.json    
 ext-mbstring is missing in composer.json  
@@ -62,25 +79,15 @@ $output = mb_convert_encoding($content, 'UTF-8');
 
 ```
 
+index.php
 
+fix broken input tag  
 
+```html
 
+ <input type="text" id="finder"></input>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
