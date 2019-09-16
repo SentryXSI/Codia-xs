@@ -19,7 +19,9 @@ https://github.com/SentryXSI/Codiad
     - No remote scripts    
     - Move inline css styles to css file  
     - Replace class file include / require with autoloader      
-    - Replace 'global' usage with dependency injection          
+    - Replace 'global' usage with dependency injection   
+    - Use short array syntax   
+    - replace scandir/readdir with DirectoryIterator        
 
     code snippets manager  
     code generators  
@@ -79,13 +81,47 @@ $output = mb_convert_encoding($content, 'UTF-8');
 
 ```
 
-index.php
+Codiad/components/filemanager/class.filemanager.php  
+class.filemanager.php
+Line 90
 
-fix broken input tag  
+Remove checks for magic quotes :
+
+```php
+
+    if (get_magic_quotes_gpc()) {
+
+```
+
+class.filemanager.php  
+Property not found  
+
+```php
+
+$this->mtime
+
+```
+
+
+
+
+
+
+index.php  
+fix input tag  
 
 ```html
 
  <input type="text" id="finder"></input>
+
+```
+
+common.php  
+Remove safe mode check  
+
+```php
+
+if (ini_get('safe_mode')) return false;
 
 ```
 
