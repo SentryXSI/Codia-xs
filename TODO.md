@@ -29,34 +29,19 @@ https://github.com/SentryXSI/Codiad
     - static website / cms generator      
 
 5 : Fix errors / issues  
- 
-  - add missing html start tag in head ( index.php )    
-
-```html
-
-<html lang="en">
-```
    
-  - add \Lib namespace to fix namespace collisions with mb_ord() / mb_chr() ( /lib/diff_match_patch.php )   
+Diff Match Patch  
+add \Lib namespace to fix namespace collisions with mb_ord() / mb_chr() ( /lib/diff_match_patch.php )    
 
 ```php
-
 PHP Fatal error:  Cannot redeclare mb_ord() in /var/www/html/Codiad/lib/diff_match_patch.php on line 2079
-
 ```
 
-Update class.filemanager.php ( public function modify )  
+Updated class.filemanager.php ( public function modify )  
 
 ```php
-
 $dmp = new Lib\diff_match_patch();
-
 ```
-  
-Composer  
-ext-json is missing in composer.json    
-ext-mbstring is missing in composer.json  
-ext-zip is missing in composer.json  
   
 File Manager  
 /Codiad/components/filemanager/class.filemanager.php  
@@ -64,67 +49,62 @@ Line 180/181
 property not found - f_options  
 
 ```php
-
 if ($this->foptions && $this->foptions['strategy']) {
     switch ($this->f_options['strategy']) {
-
 ```
   
 Codiad/components/filemanager/class.filemanager.php  
 Line 282  
-undefined variable $content  
+undefined variable $content    
 
 
 ```php
-
 $output = mb_convert_encoding($content, 'UTF-8');
-
 ```
 
 Codiad/components/filemanager/class.filemanager.php  
-class.filemanager.php
-Line 90
+Line 90  
 
-Remove checks for magic quotes :
-
+Remove checks for magic quotes :  
+  
 ```php
-
-    if (get_magic_quotes_gpc()) {
-
+if (get_magic_quotes_gpc()) {
 ```
 
 class.filemanager.php  
-Property not found  
+property not found  
 
 ```php
-
 $this->mtime
-
 ```
 
+common.php  
+remove safe mode checks 
 
+```php
+if (ini_get('safe_mode')) return false;
+```
 
+index.php
+add missing html start tag in head 
 
-
+```html
+<html lang="en">
+```
 
 index.php  
 fix input tag  
 
 ```html
-
  <input type="text" id="finder"></input>
-
 ```
 
-common.php  
-Remove safe mode check  
+Composer  
 
 ```php
-
-if (ini_get('safe_mode')) return false;
-
+ext-json is missing in composer.json    
+ext-mbstring is missing in composer.json  
+ext-zip is missing in composer.json  
 ```
-
-
 
 
